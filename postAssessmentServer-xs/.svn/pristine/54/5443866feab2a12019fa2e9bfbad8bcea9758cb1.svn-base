@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beneway.common.dao.normativedoc.NormativeDocDao">
+    <resultMap id="res" type="com.beneway.common.entity.normativedoc.NormativeDoc"/>
+
+    <select id="queryPage" resultType="com.beneway.common.entity.normativedoc.vo.NormativeDocVo">
+        select t.* from normative_doc t
+            LEFT JOIN assess_start a ON t.id = a.ass_id
+            LEFT JOIN zg z ON t.id = z.ass_id
+        <where>
+            <include refid="deleteFlag"></include>
+            <include refid="pageQuerySearch"></include>
+        </where>
+    </select>
+
+    <sql id="deleteFlag">
+        and t.is_delete = 0
+        and (official_document_id = '象政发'  or official_document_id = '象政办发')
+    </sql>
+    <sql id="pageQuerySearch">
+        <if test="param.title != null and param.title != ''">
+            and t.title like concat('%', #{param.title}, '%')
+        </if>
+        <if test="param.normativeStatus != null and param.normativeStatus != ''">
+            and t.normative_status = #{param.normativeStatus}
+        </if>
+        <if test="param.normativeStage != null and param.normativeStage != ''">
+            and t.normative_stage = #{param.normativeStage}
+        </if>
+        <if test="param.logo != null and param.logo != ''">
+            <if test="param.logo == 'qt'">
+                AND #{param.unitId} in (select unit_id from start_agency where type ='N')
+            </if>
+            <if test="param.logo == 'tb'">
+                and t.id in (
+                SELECT
+                ass_id
+                FROM
+                scheme
+                WHERE
+                id IN ( SELECT scheme_id FROM scheme_agency WHERE agency_id = #{param.unitId} and mark=#{param.fillStatus})
+                )
+            </if>
+            <if test="param.logo == 'pg'">
+                and a.qt_unit = #{param.unitId}
+            </if>
+            <if test="param.logo == 'zg'">
+                AND (z.mark = #{param.fillStatus} and (a.qt_unit = #{param.unitId} or z.agency_id = #{param.unitId}))
+            </if>
+        </if>
+
+    </sql>
+
+    <select id="amount" resultType="integer">
+        select count(*) from normative_doc
+    </select>
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beneway.common.dao.system.login.LoginuserDao">
+    <resultMap id="res" type="com.beneway.common.entity.system.login.Loginuser"/>
+    <parameterMap id="par" type="com.beneway.common.entity.system.login.Loginuser"/>
+
+    <select id="login" parameterMap="par" resultMap="res">
+        select *
+        from loginuser
+        where account=#{account}
+        and password=MD5(#{password})
+        and del = 0
+    </select>
+
+    <select id="queryPage" resultType="com.beneway.common.entity.system.login.Loginuser">
+        select
+            l.*
+        from loginuser as l
+        where l.`del` = 0
+        and l.agency_id in
+        <foreach collection="param.agencyIdList" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="param.keyword != null and param.keyword != ''">
+            and (
+                l.username like concat('%', #{param.keyword}, '%')
+                or
+                l.account like concat('%', #{param.keyword}, '%')
+            )
+        </if>
+        <if test="param.userPositions != null and param.userPositions != ''">
+            and (select count(1) from user_position where user_id = l.id and `position` in (#{param.userPositions})) > 0
+        </if>
+    </select>
+
+    <select id="queryPages" resultMap="res">
+        select
+        l.*
+        from loginuser as l
+        where l.`del` = 0
+        and l.agency_id in
+        <foreach collection="param.agencyIdList" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="param.keyword != null and param.keyword != ''">
+            and (
+            l.username like concat('%', #{param.keyword}, '%')
+            or
+            l.account like concat('%', #{param.keyword}, '%')
+            )
+        </if>
+        <if test="param.roles != null and param.roles != ''">
+            and (select count(1) from user_role where user_id = l.id and role_id in (#{param.roles})) > 0
+        </if>
+    </select>
+
+</mapper>

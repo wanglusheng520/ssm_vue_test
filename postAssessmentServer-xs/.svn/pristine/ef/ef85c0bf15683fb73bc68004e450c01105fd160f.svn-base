@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beneway.common.dao.system.agency.AgencyDao">
+    <resultMap id="res" type="com.beneway.common.entity.system.agency.Agency" />
+
+    <select id="find" resultMap="res">
+        select * from agency where 1=1
+        and agency_type='1'
+        order by seq+0
+    </select>
+
+    <select id="queryPage" resultMap="res">
+        select * from agency
+        where 1=1
+        <if test="param.pid!='' and param.pid!=null">
+            and pid = #{param.pid}
+        </if>
+        <if test="param.agencyType!='' and param.agencyType!=null">
+            and agency_type = #{param.agencyType}
+        </if>
+        <if test="param.agencyName!='' and param.agencyName!=null">
+            and agency_Name LIKE CONCAT( '%', #{param.agencyName}, '%' )
+        </if>
+        <if test="param.agencyCode!='' and param.agencyCode!=null">
+            and agency_Code LIKE CONCAT( '%', #{param.agencyCode}, '%' )
+        </if>
+        order by seq+0
+    </select>
+    <select id="getUserAgencyTree" parameterType="com.beneway.common.entity.system.agency.Agency" resultMap="res">
+        select * from agency where 1=1
+        <if test="id!=null and id!=''">
+            and FIND_IN_SET(id,getChildList(#{id}))
+        </if>
+        order by id
+    </select>
+
+    <select id="getAgencyList" parameterType="Agency" resultMap="res">
+        select * from agency t
+        ,(SELECT getChildList (#{id}) cid) j
+        where 1=1
+        and  FIND_IN_SET(id,cid)
+        order by agency_type desc,seq
+    </select>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.beneway.common.dao.userlogin.UserloginLogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.beneway.common.entity.userlogin.UserloginLog" id="res">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="ipAddress" column="ip_address"/>
+        <result property="loginTime" column="login_time"/>
+    </resultMap>
+
+    <select id="queryPage" resultType="com.beneway.common.entity.userlogin.UserloginLog">
+        select
+            ul.*,
+            l.username
+        from userlogin_log as ul
+        inner join loginuser as l on ul.user_id = l.id
+        <where>
+            <if test="param.keyword != null and param.keyword != '' ">
+                and l.username like concat('%', #{param.keyword}, '%')
+            </if>
+            <if test="param.type != null and param.type != ''">
+                and ul.type = #{param.type}
+            </if>
+        </where>
+        order by login_time desc
+    </select>
+
+    <select id="selectEnd" resultType="com.beneway.common.entity.userlogin.UserloginLog">
+        select * from userlogin_log order by id DESC limit 1
+    </select>
+
+</mapper>

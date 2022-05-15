@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beneway.common.earlywarn.dao.EarlyWarnDao">
+
+    <resultMap id="res" type="com.beneway.common.earlywarn.entity.EarlyWarn"></resultMap>
+
+    <select id="indexEarlyWarn" resultMap="res">
+        SELECT
+            ass_id,
+            ass_type,
+            create_time,
+            warn_type,
+            count
+        FROM
+            early_warn
+        WHERE
+            ( warn_mark IS NULL OR warn_mark != '1' ) and ass_id IN ( SELECT DISTINCT ass_id FROM ass_user WHERE unit_id = #{supUnitId} )
+        ORDER BY
+            create_time DESC
+            LIMIT 5
+    </select>
+
+
+    <select id="earlyWarnCount" resultType="integer">
+        select count(*) from early_warn where (warn_mark is null or warn_mark != '1')
+    </select>
+</mapper>

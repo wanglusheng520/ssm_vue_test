@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "name": "customize",
+      "type": "com.beneway.common.common.utils.sys_files.SysFilesUtils",
+      "sourceType": "com.beneway.common.common.utils.sys_files.SysFilesUtils"
+    },
+    {
+      "name": "customize.file",
+      "type": "com.beneway.common.common.config.FilesConfig",
+      "sourceType": "com.beneway.common.common.config.FilesConfig"
+    },
+    {
+      "name": "rabbit",
+      "type": "com.beneway.common.common.rabbitMQ.consumer.ConsumerBean",
+      "sourceType": "com.beneway.common.common.rabbitMQ.consumer.ConsumerBean"
+    }
+  ],
+  "properties": [
+    {
+      "name": "customize.file.file-path",
+      "type": "java.lang.String",
+      "description": "文件存放地址",
+      "sourceType": "com.beneway.common.common.config.FilesConfig"
+    },
+    {
+      "name": "customize.file.files",
+      "type": "java.lang.String",
+      "sourceType": "com.beneway.common.common.config.FilesConfig",
+      "defaultValue": "files"
+    },
+    {
+      "name": "customize.file.interim",
+      "type": "java.lang.String",
+      "description": "临时文件存放地址",
+      "sourceType": "com.beneway.common.common.config.FilesConfig",
+      "defaultValue": "interim"
+    },
+    {
+      "name": "customize.file.template",
+      "type": "java.lang.String",
+      "description": "模板文件存放地址",
+      "sourceType": "com.beneway.common.common.config.FilesConfig",
+      "defaultValue": "template"
+    },
+    {
+      "name": "rabbit.log",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.beneway.common.common.rabbitMQ.consumer.ConsumerBean"
+    }
+  ],
+  "hints": []
+}

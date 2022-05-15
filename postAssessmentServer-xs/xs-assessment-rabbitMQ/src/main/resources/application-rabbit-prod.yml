@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: srpingboot-rabbitMQ
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: xsAdmin
+    password: xsAdmin666
+    virtual-host: xs
+    listener:
+      direct:
+        acknowledge-mode: auto
+
+rabbit:
+  log: true

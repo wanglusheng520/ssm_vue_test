@@ -1,0 +1,53 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      name: assessment-xs
+      url: jdbc:mysql://rm-5yh78q631q0mulz99.mysql.rds.ops.citybrain.ningbo:3306/assessment?characterEncoding=utf-8
+      username: user
+      password: Alibaba@
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: xsadmin
+        login-password: xs.8520
+      filter:
+        config:
+          enabled: true
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+# 钉钉配置信息
+dd-config:
+  domainname: openplatform-pro.ding.zj.gov.cn
+  pc:
+    key:
+    secret:
+    appId:
+    tenantId: ""
+  qrcode:
+    key:
+    secret:
+  phone:
+    key:
+    secret:
+    appId: ""
+    tenantId: ""

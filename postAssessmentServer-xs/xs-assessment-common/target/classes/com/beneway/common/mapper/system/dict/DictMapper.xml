@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.beneway.common.dao.system.dict.DictDao">
+    <resultMap id="base" type="com.beneway.common.entity.system.dict.Dict"></resultMap>
+
+    <select id="findKeyMax"  resultType="Integer" >
+      select max(case  t.ne_key when '' then 0 else t.ne_key end )+1 as ne_key from dict t
+    </select>
+
+    <select id="findValueMax"  resultType="String" >
+        SELECT
+            max( CASE t.ne_value WHEN t.ne_value != '!' THEN 1000 ELSE t.ne_value END ) + 1 AS ne_value
+        FROM
+            dict t
+        WHERE
+            t.ne_key = #{neKey}
+    </select>
+
+    <select id="findAttr" resultMap="base">
+        select  GROUP_CONCAT( ne_value ) as neValue from dict
+        where 1=1
+        and ne_key=#{neKey}
+        and option01=#{option01}
+        and is_delete = 0
+        and ne_value != '!'
+        order by ne_value
+    </select>
+
+    <select id="findByNeValue" resultType="String" >
+        select content from dict
+        where 1=1
+        and ne_key = #{neKey}
+        and ne_value = #{neValue}
+    </select>
+
+    <select id="queryPage" resultMap="base">
+            select * from dict where ne_value !=  "!" and ne_key = #{params.neKey} and is_delete = 0
+        <if test="params.search != null and params.search != ''">
+            and content LIKE CONCAT( '%', #{params.search}, '%' )
+        </if>
+            order by ne_value
+    </select>
+</mapper>

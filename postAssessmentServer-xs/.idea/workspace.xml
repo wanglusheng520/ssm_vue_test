@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="493a52dd-d8d4-44e5-b32a-6fe2af2d42ac" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$" beforeDir="true" afterPath="$PROJECT_DIR$" afterDir="true" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/xs-assessment-admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-admin/xs-assessment-admin.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/common/rabbitMQ/consumer/ConsumerReceiverMess.java" beforeDir="false" afterPath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/common/rabbitMQ/consumer/ConsumerReceiverMess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/common/rabbitMQ/consumer/ConsumerReceiverTb.java" beforeDir="false" afterPath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/common/rabbitMQ/consumer/ConsumerReceiverTb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/common/rabbitMQ/consumer/ConsumerReceiverYJ.java" beforeDir="false" afterPath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/common/rabbitMQ/consumer/ConsumerReceiverYJ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/dao/majorproject/MajorProjectDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/dao/majorproject/MajorProjectDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xs-assessment-tasks/target/classes/com/beneway/tasks/common/job/NormativeDocJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/xs-assessment-tasks/target/classes/com/beneway/tasks/common/job/NormativeDocJob.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\IDEA\Maven\repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../Maven/apache-maven-3.6.1" />
+        <option name="useMavenConfig" value="true" />
+        <option name="userSettingsFile" value="D:\IDEA\Maven\apache-maven-3.6.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="28K9r4Et8q0130ZwIM78kxsXrns" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.AdminApplication">
+    <configuration name="AdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="xs-assessment-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.beneway.admin.AdminApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TasksApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="xs-assessment-tasks" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.beneway.tasks.TasksApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.AdminApplication" />
+      <item itemvalue="Spring Boot.TasksApplication" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\王路生\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\IDEA\workSpace\Test\post-assessment-xs\postAssessmentServer-xs" />
+          <option name="myCopyRoot" value="D:\IDEA\workSpace\Test\post-assessment-xs\postAssessmentServer-xs" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\IDEA\workSpace\Test\post-assessment-xs\postAssessmentServer-xs" />
+          <option name="myCopyRoot" value="D:\IDEA\workSpace\Test\post-assessment-xs\postAssessmentServer-xs" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="493a52dd-d8d4-44e5-b32a-6fe2af2d42ac" name="Changes" comment="" />
+      <created>1650954612753</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650954612753</updated>
+      <workItem from="1650954615629" duration="1222000" />
+      <workItem from="1650956005049" duration="2357000" />
+      <workItem from="1650963944700" duration="829000" />
+      <workItem from="1651023493072" duration="7655000" />
+      <workItem from="1651107461045" duration="38000" />
+      <workItem from="1651107627630" duration="3593000" />
+      <workItem from="1651491411111" duration="410000" />
+      <workItem from="1651714510501" duration="11812000" />
+      <workItem from="1651803368173" duration="533000" />
+      <workItem from="1651805049537" duration="291000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/xs-assessment-common/src/main/java/com/beneway/common/dao/majorproject/MajorProjectDao.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

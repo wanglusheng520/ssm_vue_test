@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beneway.common.dao.majorproject.MajorProjectDao">
+    <resultMap id="res" type="com.beneway.common.entity.majorproject.MajorProject"/>
+
+    <select id="queryPage" resultType="com.beneway.common.entity.majorproject.vo.MajorProjectVo">
+        select t.*,a.create_time as startDate
+        from major_project t
+            LEFT JOIN assess_start a ON t.id = a.ass_id
+            LEFT JOIN zg z ON t.id = z.ass_id
+        where 1=1
+        <include refid="deleteFlag"></include>
+        <include refid="pageQuerySearch"></include>
+        order by a.create_time desc,t.create_time,t.project_nb desc
+    </select>
+
+    <sql id="deleteFlag">
+        and t.is_delete = 0
+    </sql>
+
+    <sql id="pageQuerySearch">
+        <if test="param.projectName != null and param.projectName != ''">
+            and t.project_name like concat('%', #{param.projectName}, '%')
+        </if>
+        <if test="param.investType != null and param.investType != ''">
+            and t.invest_type = #{param.investType}
+        </if>
+        <if test="param.projectType != null and param.projectType != ''">
+            and t.project_type = #{param.projectType}
+        </if>
+        <if test="param.buildNature != null and param.buildNature != ''">
+            and t.build_nature = #{param.buildNature}
+        </if>
+        <if test="param.projectStatus != null and param.projectStatus != ''">
+            and t.project_status = #{param.projectStatus}
+        </if>
+        <if test="param.projectStage != null and param.projectStage != ''">
+            and t.project_stage = #{param.projectStage}
+        </if>
+        <if test="param.logo != null and param.logo != ''">
+            <if test="param.logo == 'qt'">
+                AND #{param.unitId} in (select unit_id from start_agency where type ='P')
+                <if test="param.investTypes != null and param.investTypes != ''">
+                AND FIND_IN_SET( t.invest_type, #{param.investTypes})
+                </if>
+                <if test="param.projectTypes != null and param.projectTypes != ''">
+                AND FIND_IN_SET( t.project_type, #{param.projectTypes} )
+                </if>
+            </if>
+            <if test="param.logo == 'tb'">
+                and t.id in (
+                SELECT
+                ass_id
+                FROM
+                scheme
+                WHERE
+                id IN ( SELECT scheme_id FROM scheme_agency WHERE agency_id = #{param.unitId} and mark=#{param.fillStatus})
+                )
+            </if>
+            <if test="param.logo == 'pg'">
+                and a.qt_unit = #{param.unitId}
+            </if>
+            <if test="param.logo == 'zg'">
+                AND (z.mark = #{param.fillStatus} and (a.qt_unit = #{param.unitId} or z.agency_id = #{param.unitId}))
+            </if>
+        </if>
+
+    </sql>
+
+    <select id="zfsize" resultType="integer">
+        select count(*) from major_project where invest_type = '政府投资类型'
+    </select>
+
+    <select id="shsize" resultType="integer">
+        select count(*) from major_project where invest_type = '社会投资类型'
+    </select>
+</mapper>

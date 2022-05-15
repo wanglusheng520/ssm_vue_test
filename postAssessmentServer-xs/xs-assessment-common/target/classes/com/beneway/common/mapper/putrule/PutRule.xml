@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beneway.common.dao.putrule.PutRuleDao">
+    <resultMap id="res" type="com.beneway.common.entity.putrule.PutRule"/>
+
+    <select id="queryPage" resultType="com.beneway.common.entity.putrule.vo.PutRuleVo">
+        select
+            p.*,u.username as createName
+        from
+            put_rule p
+            left join sys_user u on p.create_user = u.id
+        <where>
+            <include refid="pidFlag"></include>
+            <include refid="pageQuerySearch"></include>
+        </where>
+
+    </select>
+
+    <sql id="pidFlag">
+        and p.pid = '0'
+    </sql>
+    <sql id="pageQuerySearch">
+        <if test="param.search != null and param.search != ''">
+            and p.rule_name like concat('%', #{param.search}, '%')
+        </if>
+    </sql>
+
+</mapper>
