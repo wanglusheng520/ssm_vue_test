@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.beneway.common.dao.tzpromes.TzProMesDao">
-
-    <select id="getOne" resultType="com.beneway.common.entity.tzpromes.TzProMesVo">
-        select * from tz_pro_mes where proj_id = #{projId}
-    </select>
-
-</mapper>
